@@ -27,7 +27,9 @@ I would like to be able to select some number of several available dishes
 
 
 require './lib/order.rb'
+require './lib/menu.rb'
 order = Order.new
+menu = Menu.new
 order.select_order(2, 'BBQ')
 => {'2 BBQ Pizzas' => '£24'}
 order.select_order(1, 'Pepperoni')
