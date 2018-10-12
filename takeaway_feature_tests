@@ -1,0 +1,73 @@
+As a customer
+So that I can check if I want to order something
+I would like to see a list of dishes with prices
+
+require './lib/menu.rb'
+menu = Menu.new
+menu.see_dishes
+=> '£12 BBQ'
+=> '£15 Pepperoni'
+=> '£10 Margarita'
+=> '£12 Ham and Pineapple'
+=> '£12 Vegetarian'
+=> '£15 Meat Feast'
+# Print out the menu:
+# print '£12 BBQ'
+# print '£15 Pepperoni'
+# print '£10 Margarita'
+# print '£12 Ham and Pineapple'
+# print '£12 Vegetarian'
+# print '£15 Meat Feast'
+
+# -- All Public methods
+
+As a customer
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes
+
+
+require './lib/order.rb'
+order = Order.new
+order.select_order(2, 'BBQ')
+=> {'2 BBQ Pizzas' => '£24'}
+order.select_order(1, 'Pepperoni')
+=> {'1 Pepperoni Pizza' => '£15'}
+order.review_order
+=> '1 Pepperoni Pizza and 2 BBQ Pizzas'
+
+# -- All Public methods
+
+As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+require './lib/order.rb'
+order = Order.new
+order.select_order(2, 'BBQ')
+=> {'2 BBQ Pizzas' => '£24'}
+order.select_order(1, 'Pepperoni')
+=> {'1 Pepperoni Pizza' => '£15'}
+order.total_order
+=> £39
+
+
+
+As a customer
+So that I am reassured that my order will be delivered on time
+I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+
+require './lib/order.rb'
+order = Order.new
+text = Text.new
+order.select_order(2, 'BBQ')
+=> {'2 BBQ Pizzas' => '£24'}
+order.select_order(1, 'Pepperoni')
+=> {'1 Pepperoni Pizza' => '£15'}
+order.total
+=> £39
+order.place_order
+"Thank you! Your order was placed and will be delivered before 18:52"
+
+#BONUS
+
+Send order via SMS
